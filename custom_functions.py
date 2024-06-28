@@ -23,12 +23,17 @@ def get_accme_cycles(parameters_df, index):
     working_set_size = parameters_df['Working Set Size'][index]
     mem_bandwidth = parameters_df['Mem Bandwidth'][index]
 
+    # Do not overcalculate for invocation.
+    if cores > parallelism:
+        cores = parallelism
+    
+    #print('cores',cores)
     compute_cycles = accme_compute(aio_latency, num_aios, cores, parallelism)
     memory_cycles = accme_memory(mem_latency, ext_data_movement, mem_overlap, bus_width)
     invokation_cycles = accme_invocation(mem_latency, working_set_size, cores, mem_bandwidth)
 
-    accme_cycles = compute_cycles + memory_cycles + invokation_cycles
-    return accme_cycles
+    return compute_cycles, memory_cycles, invokation_cycles
+    #return compute_cycles + memory_cycles + invokation_cycles # Sum of all cycles
 
 def generate_accme_cycles_column(input_df):
     accme_cycles = []
