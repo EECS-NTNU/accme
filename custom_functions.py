@@ -32,7 +32,7 @@ def get_accme_cycles(parameters_df, index):
     memory_cycles = accme_memory(mem_latency, ext_data_movement, mem_overlap, bus_width)
     invokation_cycles = accme_invocation(mem_latency, working_set_size, cores, mem_bandwidth)
 
-    return compute_cycles, memory_cycles, invokation_cycles
+    return [compute_cycles, memory_cycles, invokation_cycles]
     #return compute_cycles + memory_cycles + invokation_cycles # Sum of all cycles
 
 def generate_accme_cycles_column(input_df):
@@ -45,7 +45,11 @@ def generate_accme_cycles_column(input_df):
 
 def calculate_cycle_uncertainty_from_aio(df, aio_uncertainty, frequency):
     
-    df['Time (s)'] = df['AccMe Cycles'] / frequency
+    #df['Time (s)'] = sum(df['AccMe Cycles']) / frequency
+    time_list = []
+    for i in range(len(df)):
+        time_list.append(sum(df['AccMe Cycles'][i]) / frequency)
+    df['Time (s)'] = time_list
     df['AIOs/Sec'] = df['Matrix Size'] / df['Time (s)']
     df['AIOs/Sec Upper'] = df['AIOs/Sec'] * aio_uncertainty
     df['AIOs/Sec Lower'] = df['AIOs/Sec'] / aio_uncertainty
