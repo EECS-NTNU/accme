@@ -20,7 +20,7 @@ These examples use a variety of python libraries to function correctly.
 
 Example repo setup using Anaconda:
 
-`clone https://github.com/EECS-NTNU/accme.git`<br />
+`git clone https://github.com/EECS-NTNU/accme.git`<br />
 `cd accme`<br />
 `conda create --name accme_examples python=3.12`<br />
 `conda activate accme_examples`<br />
