@@ -72,7 +72,7 @@ def generate_accme_cycles_column(input_df):
 
 
 ####################################
-# Uncertainty Specific function
+# Uncertainty Specific functions
 ####################################
 def calculate_cycle_uncertainty_from_aio(df, aio_uncertainty, frequency):
     
@@ -166,7 +166,7 @@ def plot_spa_stacks(df, bus_width, config_choice):
 
   bar_width = 0.8
   core_labels = ['4c','16c','64c','256c']
-  benchmark_label = 'CONV'
+  benchmark_label = 'Pixels: ' + str(df['Image Pixels'][config_choice]) + ' Kernel Size: ' +  str(df['Kernel Size'][config_choice])
 
   memory_color = 'tab:orange'
   invoke_color = 'tab:red'
@@ -184,7 +184,6 @@ def plot_spa_stacks(df, bus_width, config_choice):
     df['Cores'] = core_counts[i]
     df['Mem Overlap'] = 0
     df = generate_accme_cycles_column(df)
-    print(df['AccMe Cycles'][config_choice])
     total.append(sum(df['AccMe Cycles'][config_choice]))
     compute.append(df['AccMe Cycles'][config_choice][0])
     unmasked.append(df['AccMe Cycles'][config_choice][1])
@@ -237,7 +236,7 @@ def plot_spa_stacks(df, bus_width, config_choice):
   plt.show()
 
 ####################################
-# Energy analysis function
+# Energy analysis functions
 ####################################
 def accme_ee_cycles(df, cores, config_choice):
 

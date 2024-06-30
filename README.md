@@ -13,16 +13,20 @@ This page provides jupyter notebook examples to demonstrate different ways that 
 
 `example3-energy-analysis.ipynb`: This example couples AIO+AccMe to a simple energy model, where both the compute and memory systems of the accelerator have both static and dynamic power components. The user may adjust each of these power components to see how the energy efficiency scaling of the device changes depending on the AIO being executed.
 
+
 Installation Notes:
 These examples use a variety of python libraries to function correctly.
 
+
 Example repo setup using Anaconda:
-`clone https://github.com/EECS-NTNU/accme.git`
-`cd accme`
-`conda create --name accme_examples python=3.12`
-`conda install numpy`
-`conda install pandas`
-`conda install jupyterlab`
-`conda install ipywidgets`
-`conda install matplotlib`
-`conda install plotly`
+
+`git clone https://github.com/EECS-NTNU/accme.git`<br />
+`cd accme`<br />
+`conda create --name accme_examples python=3.12`<br />
+`conda activate accme_examples`<br />
+`conda install numpy`<br />
+`conda install pandas`<br />
+`conda install jupyterlab`<br />
+`conda install ipywidgets`<br />
+`conda install matplotlib`<br />
+`conda install plotly`<br />
