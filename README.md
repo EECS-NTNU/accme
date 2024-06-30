@@ -16,6 +16,13 @@ This page provides jupyter notebook examples to demonstrate different ways that 
 Installation Notes:
 These examples use a variety of python libraries to function correctly.
 
-Example Repo Setup using Anaconda:
+Example repo setup using Anaconda:
 `clone https://github.com/EECS-NTNU/accme.git`
-
+`cd accme`
+`conda create --name accme_examples python=3.12`
+`conda install numpy`
+`conda install pandas`
+`conda install jupyterlab`
+`conda install ipywidgets`
+`conda install matplotlib`
+`conda install plotly`
